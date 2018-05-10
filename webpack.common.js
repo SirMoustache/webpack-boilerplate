@@ -1,11 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const IS_DEV = process.env.NODE_ENV === 'dev';
 
-const dirSrc = path.join(__dirname, 'src');
-const dirDest = process.env.dest || './build/';
+const dirSrc ='src';
+const dirDest = process.env.dest || 'build';
 
 const version = process.env.version ? `-${process.env.version}` : ``;
 const name = process.env.name || `bundle`;

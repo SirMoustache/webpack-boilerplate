@@ -9,13 +9,13 @@ Run Node server and start watching srs files with webpack
     npm run start
 ```
 
-Build with dev options
+Build with dev config
 
 ```bash
     npm run dev
 ```
 
-Build with prod options
+Build with prod config
 
 ```bash
     npm run build
@@ -23,8 +23,7 @@ Build with prod options
 
 ## Command Line Configuration
 
-Configuration is supported through parameter before npm run commant
-
+Configuration is supported by parameter before `npm run` command
 
 Supported configurations properties:
 
