@@ -42,9 +42,9 @@ module.exports = {
           }
         ]
       },
-      // CSS / SASS
+      // CSS / LESS
       {
-        test: /\.less/,
+        test: /\.less$/,
         use: [
           'style-loader',
           {
@@ -61,6 +61,24 @@ module.exports = {
             }
           }
         ]
+      },
+      // CSS / SCSS
+      {
+        test: /\.scss$/,
+        use: [{
+            loader: "style-loader",
+            options: {
+              sourceMap: IS_DEV
+            }
+        }, {
+            loader: "css-loader"
+        }, {
+            loader: "sass-loader",
+            options: {
+              sourceMap: IS_DEV,
+                includePaths: [path.resolve(__dirname, 'node_modules', dirSrc)]
+            }
+        }]
       },
       // IMAGES
       {
