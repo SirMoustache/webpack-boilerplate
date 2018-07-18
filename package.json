@@ -2,50 +2,6 @@
   "name": "webpack-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "env": {
-      "es6": true,
-      "browser": true,
-      "node": true
-    },
-    "rules": {
-      "no-console": [
-        "error",
-        {
-          "allow": [
-            "warn",
-            "error"
-          ]
-        }
-      ],
-      "no-var": "error",
-      "linebreak-style": [
-        "error",
-        "windows"
-      ]
-    }
-  },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "modules": false
-        }
-      ]
-    ],
-    "plugins": []
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node server.js",
@@ -64,6 +20,7 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "file-loader": "1.1.11",
