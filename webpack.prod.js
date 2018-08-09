@@ -9,5 +9,13 @@ const plugins = [
 
 module.exports = merge(common, {
   plugins: plugins,
-  mode: 'production'
+  mode: 'production',
+  optimization: {
+    minimize: true,
+    nodeEnv: 'production',
+    sideEffects: true,
+    concatenateModules: true,
+    splitChunks: { chunks: 'all' },
+    runtimeChunk: true,
+  }
 });
