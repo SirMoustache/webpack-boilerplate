@@ -9,7 +9,6 @@ const DIR_DEST = process.env.dest || 'build';
 module.exports = {
   entry: ['babel-polyfill', path.resolve(__dirname, DIR_SRC, 'js/index.js')],
   output: {
-    library: 'WPB',
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, DIR_DEST),
