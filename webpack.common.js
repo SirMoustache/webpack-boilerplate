@@ -3,22 +3,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const IS_DEV = process.env.NODE_ENV === 'dev';
 
-const dirSrc ='src';
-const dirDest = process.env.dest || 'build';
-
-const version = process.env.version ? `-${process.env.version}` : ``;
-const name = process.env.name || `bundle`;
-const bundleName = `${name}${version}`;
+const DIR_SRC = 'src';
+const DIR_DEST = process.env.dest || 'build';
 
 module.exports = {
-  entry: ['babel-polyfill', path.resolve(__dirname, dirSrc, 'js/index.js')],
+  entry: ['babel-polyfill', path.resolve(__dirname, DIR_SRC, 'js/index.js')],
   output: {
     library: 'WPB',
-    filename: `${bundleName}.js`,
-    path: path.resolve(__dirname, dirDest)
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
+    path: path.resolve(__dirname, DIR_DEST),
   },
   resolve: {
-    modules: [dirSrc, 'node_modules']
+    modules: [DIR_SRC, 'node_modules'],
   },
   module: {
     rules: [
@@ -26,9 +23,6 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
-        query: {
-          presets: ['env']
-        }
       },
       {
         test: /\.css$/,
@@ -37,10 +31,10 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: IS_DEV
-            }
-          }
-        ]
+              sourceMap: IS_DEV,
+            },
+          },
+        ],
       },
       // CSS / LESS
       {
@@ -50,49 +44,59 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: IS_DEV
-            }
+              sourceMap: IS_DEV,
+            },
           },
           {
             loader: 'less-loader',
             options: {
               sourceMap: IS_DEV,
-              paths: [path.resolve(__dirname, 'node_modules', dirSrc)]
-            }
-          }
-        ]
+              paths: [path.resolve(__dirname, 'node_modules', DIR_SRC)],
+            },
+          },
+        ],
       },
       // CSS / SCSS
       {
         test: /\.scss$/,
-        use: [{
-            loader: "style-loader",
-            options: {
-              sourceMap: IS_DEV
-            }
-        }, {
-            loader: "css-loader"
-        }, {
-            loader: "sass-loader",
+        use: [
+          {
+            loader: 'style-loader',
             options: {
               sourceMap: IS_DEV,
-                includePaths: [path.resolve(__dirname, 'node_modules', dirSrc)]
-            }
-        }]
+            },
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: IS_DEV,
+              includePaths: [path.resolve(__dirname, 'node_modules', DIR_SRC)],
+            },
+          },
+        ],
       },
       // IMAGES
       {
         test: /\.(jpe?g|png|gif)$/,
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]'
-        }
-      }
-    ]
+          name: '[path][name].[ext]',
+        },
+      },
+      // FONTS
+      {
+        test: /\.(eot|otf|ttf|woff|woff2)$/,
+        use: 'file-loader',
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, dirSrc, 'index.html')
-    })
-  ]
+      inject: true,
+      template: path.join(__dirname, DIR_SRC, 'index.html'),
+    }),
+  ],
 };

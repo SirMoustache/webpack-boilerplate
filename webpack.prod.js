@@ -1,14 +1,16 @@
 const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
-
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const plugins = [
-  new UglifyJSPlugin()
-];
+const common = require('./webpack.common.js');
+
+const plugins = [new UglifyJSPlugin()];
 
 module.exports = merge(common, {
-  plugins: plugins,
+  output: {
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].chunk.js',
+  },
+  plugins,
   mode: 'production',
   optimization: {
     minimize: true,
@@ -17,5 +19,5 @@ module.exports = merge(common, {
     concatenateModules: true,
     splitChunks: { chunks: 'all' },
     runtimeChunk: true,
-  }
+  },
 });

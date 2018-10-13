@@ -9,5 +9,8 @@
         "ignore": ["after-comment"]
       }
     ]
-  }
+  },
+  "extends": [
+    "stylelint-config-recommended"
+  ]
 }
