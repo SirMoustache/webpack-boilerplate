@@ -1,0 +1,10 @@
+{
+  "transform": {
+    "^.+\\.js$": "babel-jest"
+  },
+  "verbose": true,
+  "testRegex": "(\/__tests__\/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  "testPathIgnorePatterns": ["<rootDir>/node_modules/", "<rootDir>/build/", "<rootDir>/es/"],
+  "roots": ["<rootDir>/src"],
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+}
