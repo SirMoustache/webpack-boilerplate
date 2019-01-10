@@ -12,14 +12,14 @@
     "prebuild": "npm run build:clean",
     "build": "webpack --config webpack.prod.js",
     "build:clean": "rimraf ./build",
-    "dev": "webpack --config webpack.dev.js",
-    "watch": "webpack --watch --config webpack.dev.js",
+    "build:dev": "webpack --config webpack.dev.js",
+    "watch": "npm run build:dev -- --watch",
     "start": "concurrently \"npm run serve\"  \"npm run watch\"",
     "lint": "npm run lint:js",
     "lint:js": "eslint ./src/js/** --ignore-path .gitignore",
     "prettify": "prettier --write ./src/**"
   },
-  "author": "",
+  "author": "SirMoustache",
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
