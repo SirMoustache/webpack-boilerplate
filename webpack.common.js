@@ -7,7 +7,7 @@ const DIR_SRC = 'src';
 const DIR_DEST = process.env.dest || 'build';
 
 module.exports = {
-  entry: ['babel-polyfill', path.resolve(__dirname, DIR_SRC, 'js/index.js')],
+  entry: [path.resolve(__dirname, DIR_SRC, 'js/index.js')],
   output: {
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
