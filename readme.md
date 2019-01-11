@@ -1,5 +1,7 @@
 # Webpack Boilerplate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/SirMoustache/webpack-boilerplate.svg)](https://greenkeeper.io/)
+
 ## Getting started
 
 ```bash
